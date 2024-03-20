@@ -179,7 +179,7 @@ public class MovieServiceImpl implements MovieService {
 		Pageable pageable = PageRequest.of(pageNo -1 , pageSize);
 		return movieRepository.findUpcomingMovies(currentDate,pageable);
 	}
-
+///
 	@Override
 	public List<Movie> searchNowShowingMovies1(String keyword) {
 		Date currentDate = new Date();
