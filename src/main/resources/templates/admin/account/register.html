@@ -31,31 +31,32 @@
 								<div class="row">
 									<div class="col-12">
 										<div class="form__group"> <input type="text" class="form__input"
-												th:field="${account.username}" placeholder="Username">
+												th:field="${account.username}" placeholder="Username"
+												pattern="^.{7,20}$" required>
 										</div>
 
 										<div class="row">
 											<div class="col-12">
 												<div class="form__group"> <input type="password" class="form__input"
-														placeholder="Password" th:field="${account.password}">
+														placeholder="Password" th:field="${account.password}" pattern="^.{7,60}$" required>
 												</div>
 
 												<div class="row">
 													<div class="col-12">
 														<div class="form__group"> <input type="text" class="form__input"
-																placeholder="FullName" th:field="${account.fullname}">
+																placeholder="FullName" th:field="${account.fullname}" required>
 														</div>
 														<div class="row">
 															<div class="col-12">
 																<div class="form__group"> <input type="text"
 																		class="form__input" placeholder="Phone Number"
-																		th:field="${account.phone}">
+																		th:field="${account.phone}" required pattern="^\d{10}$">
 																</div>
 																<div class="row">
 																	<div class="col-12">
-																		<div class="form__group"> <input type="text"
+																		<div class="form__group"> <input type="email"
 																				class="form__input" placeholder="Email"
-																				th:field="${account.email}">
+																				th:field="${account.email}" required>
 																		</div>
 
 																		<div class="col-12">
@@ -63,7 +64,7 @@
 																				<textarea id="text" name="text"
 																					class="form__textarea"
 																					placeholder="Address"
-																					th:field="${account.address}"></textarea>
+																					th:field="${account.address}" required></textarea>
 																			</div>
 																		</div>
 

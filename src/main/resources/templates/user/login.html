@@ -1,6 +1,9 @@
 <html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/user :: content('Login', ~{this :: .login})}">
 <form id="login-form" class="login" th:action="@{/account/process-login}" method="post">
-	<p class="login__title">Log in <br><span class="login-edition">welcome to A.Movie</span></p>
+	<p class="login__title">Log in <br><span class="login-edition">welcome to A.Movie</span>
+		<br>
+		<span class="login-edition" style="color: red" th:text="${msg}"></span>
+	</p>
 
 
 	<div class="field-wrap">
@@ -13,4 +16,3 @@
 		<a th:href="@{/user/forgetpassword}" class="login__tracker form__tracker">Forgot password?</a>
 	</div>
 </form>
-

@@ -110,7 +110,7 @@ public class AccountController {
 
 				if (accountService.save(account)) {
 
-					redirectAttributes.addFlashAttribute("msg", "ok");
+					redirectAttributes.addFlashAttribute("msg", "you can login now");
 
 				} else {
 					redirectAttributes.addFlashAttribute("msg", "fail");
@@ -133,7 +133,7 @@ public class AccountController {
 			return "user/accessdenied";
 		} else {
 			if (error != null) {
-				modelMap.put("msg", "You can not access to this page");
+				modelMap.put("msg", "Wrong username or password");
 			}
 			if (logout != null) {
 				modelMap.put("msg", "Log out");
@@ -165,14 +165,13 @@ public class AccountController {
 		if (PaidforFood == null) {
 			PaidforFood = 0;
 		}
-		int total=PaidforMovie+PaidforFood;
-		System.out.println("movie: "+PaidforMovie);
-		System.out.println("food: "+PaidforFood);
-		System.out.println("total: "+total);
-		
+		int total = PaidforMovie + PaidforFood;
+		System.out.println("movie: " + PaidforMovie);
+		System.out.println("food: " + PaidforFood);
+		System.out.println("total: " + total);
+
 		modelMap.put("shows", showService.findAllShowsByAccountId(account.getId()));
-		
-		
+
 		modelMap.put("Paid", total);
 		modelMap.put("account", account);
 
@@ -235,7 +234,7 @@ public class AccountController {
 		Account account = accountService.findbyemail(email);
 		if (account == null) {
 			redirectAttributes.addFlashAttribute("msg", "account not found");
-			return "redirect:/account/forgetpassword";
+			return "redirect:/user/forgetpassword";
 		} else {
 
 			try {
