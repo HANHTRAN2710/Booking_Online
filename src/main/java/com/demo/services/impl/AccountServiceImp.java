@@ -161,19 +161,7 @@ public class AccountServiceImp implements AccountService {
     }
 	
 
-	public List<Account> findAllByRole(int n) {
-		List<Account> accounts = accountRepository.findAll();
-		List<Account> accountsByRole = new ArrayList<>();
-		for (Account account : accounts) {
-			Set<Role> roles = account.getRoles();
-			for (Role role : roles) {
-				if (role.getId() == n) {
-					accountsByRole.add(account);
-				}
-			}
-		}
-		return accountsByRole;
-	}
+	
 
 	public String getpassword(String username) {
 		Account account = accountRepository.findbyusername(username);
@@ -238,5 +226,13 @@ public class AccountServiceImp implements AccountService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Page<Account> findAllByRole1(int roleId, int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+        return accountRepository.findAllByRoleId(roleId, pageable);
+	}
+
+	
 
 }

@@ -230,7 +230,7 @@ public class DashboardController {
 		if (keyword != null) {
 			page = accountService.findAccount(keyword,3, pageNo, pageSize);
 		} else {
-			page = accountService.findAllByRole(3,pageNo, pageSize);
+			page = accountService.findAllByRole1(3,pageNo, pageSize);
 		}
 
 		modelMap.put("accounts", page.getContent());
@@ -250,7 +250,7 @@ public class DashboardController {
 		if (keyword != null) {
 			page = accountService.findAccount(keyword,2, pageNo, pageSize);
 		} else {
-			page = accountService.findAllByRole(2,pageNo, pageSize);
+			page = accountService.findAllByRole1(2,pageNo, pageSize);
 		}
 
 		modelMap.put("accounts", page.getContent());

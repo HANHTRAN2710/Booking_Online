@@ -31,8 +31,7 @@ public interface AccountService extends UserDetailsService {
 	public boolean checkemail(String email);
 
 	public Page<Account> findAllByRole(int n, int pageNo, int pageSize);
-
-	public List<Account> findAllByRole(int n);
+	public Page<Account> findAllByRole1(int roleId, int pageNo, int pageSize);
 
 	public String getpassword(String username);
 
