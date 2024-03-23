@@ -32,9 +32,6 @@ public interface AccountService extends UserDetailsService {
 
 	public Page<Account> findAllByRole(int n, int pageNo, int pageSize);
 
-	public Page<Account> findAllByRole1(int roleId, int pageNo, int pageSize);
-
-
 	public List<Account> findAllByRoles(int n);
 
 	public String getpassword(String username);

@@ -248,12 +248,4 @@ public class AccountServiceImp implements AccountService {
 		return accountRepository.searchAccounts(kw, id);
 	}
 
-	@Override
-	public Page<Account> findAllByRole1(int roleId, int pageNo, int pageSize) {
-		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
-        return accountRepository.findAllByRoleId(roleId, pageable);
-	}
-
-	
-
 }

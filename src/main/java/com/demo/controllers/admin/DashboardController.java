@@ -223,36 +223,12 @@ public class DashboardController {
 	public String ListUser(ModelMap modelMap) {
 		modelMap.put("accounts", accountService.findAllByRoles(3));
 
-
-		if (keyword != null) {
-			page = accountService.findAccount(keyword,3, pageNo, pageSize);
-		} else {
-			page = accountService.findAllByRole1(3,pageNo, pageSize);
-		}
-
-		modelMap.put("accounts", page.getContent());
-		modelMap.put("currentPage", pageNo);
-		modelMap.put("totalPages", page.getTotalPages());
-		modelMap.put("keyword", keyword);
-
 		return "admin/account/listuser";
 	}
 
 	@RequestMapping(value = { "liststaff" }, method = RequestMethod.GET)
 	public String ListStaff(ModelMap modelMap) {
 		modelMap.put("accounts", accountService.findAllByRoles(2));
-
-
-		if (keyword != null) {
-			page = accountService.findAccount(keyword,2, pageNo, pageSize);
-		} else {
-			page = accountService.findAllByRole1(2,pageNo, pageSize);
-		}
-
-		modelMap.put("accounts", page.getContent());
-		modelMap.put("currentPage", pageNo);
-		modelMap.put("totalPages", page.getTotalPages());
-		modelMap.put("keyword", keyword);
 
 		return "admin/account/liststaff";
 	}

@@ -13,38 +13,7 @@
 					tickets</span></p>
 		</div>
 
-		<div class="ticket">
-			<div class="ticket-position">
-				<div class="ticket__indecator indecator--pre">
-					<div class="indecator-text pre--text">online ticket</div>
-				</div>
-				<div class="ticket__inner">
-
-					<div class="ticket-secondary">
-						<span class="ticket__item" style="text-align: center;">Ticket </span>
-						<span class="ticket__item ticket__date">25/10/2013</span>
-						<span class="ticket__item ticket__time">17:45</span>
-						<span class="ticket__item">Cinema: <span class="ticket__cinema">Cineworld</span></span>
-						<span class="ticket__item">Hall: <span class="ticket__hall">Visconti</span></span>
-						<span class="ticket__item ticket__price" >price:
-							 <strong class="ticket__cost" > </strong></span>
-								
-					</div>
-
-					<div class="ticket-primery">
-						<span class="ticket__item ticket__item--primery ticket__film">Film<br><strong
-								class="ticket__movie">The Fifth Estate (2013)</strong></span>
-						<span class="ticket__item ticket__item--primery">Seats: <span class="ticket__place">11F, 12F,
-								13F</span></span>
-					</div>
-
-
-				</div>
-				<div class="ticket__indecator indecator--post">
-					<div class="indecator-text post--text">online ticket</div>
-				</div>
-			</div>
-		</div>
+		
 
 
 
@@ -57,31 +26,31 @@
 		const showPrice = JSON.parse(localStorage.getItem("showPrice"));
 		const status = $("#status").val();
 
-
-		
 		function insertBill() {
-			console.log(status)
-			var payment = parseFloat(totalCostBill);
-			
-		//	$.ajax({
-			//	type: "POST",
-			//	url: "order/savethank",
-			//	data: {
-			//		showPrice: localStorage.getItem('showPrice'),
-			//		showId: localStorage.getItem('showId'),
-			//		foods: localStorage.getItem('foods'),
-		//	seatIds: localStorage.getItem('seatIds'),
-					
-			//		},
-			//	dataType: 'JSON',
-			//	success: function (res) {
-					
-				//}, error: function (res) {
-				//	console.log("Fail");
-				//}
-			//});
-		}
-		insertBill();
+			const obj = {
+					showPrice: showPrice,
+					showId: showId,
+					foods: foods,
+					seatIds: seatIds	
+			}
+			console.log(obj)
+			$.ajax({
+                type: "POST",
+                url: "api/savethank",
+                data: JSON.stringify(obj),
+               contentType:'application/json',
+                success: function (res) {
+                    console.log(res);
+                    // Update the UI with the response data
+                    $('.ticket__cost').text(res.totalPrice); // Assuming totalPrice is the field in the response
+                }, 
+                error: function (res) {
+                    console.log(res)
+                    console.log("Fail");
+                }
+            });
+        }
+        insertBill();
 	</script>
 </section>
 

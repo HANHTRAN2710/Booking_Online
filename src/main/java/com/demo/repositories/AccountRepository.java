@@ -32,9 +32,6 @@ public interface AccountRepository extends CrudRepository<Account, Integer> {
 
 	@Query("from Account order by id desc")
 	public Page<Account> findAll(Pageable pageable);
-	
-	@Query("SELECT a FROM Account a JOIN a.roles r WHERE r.id = :roleId")
-    Page<Account> findAllByRoleId(@Param("roleId") int roleId, Pageable pageable);
 
 	@Query("SELECT a FROM Account a JOIN a.roles r WHERE a.username LIKE %:username% AND r.id = :id")
 	public List<Account> searchAccounts(@Param("username") String username, @Param("id") int id);
